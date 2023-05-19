@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import "../styles/App.scss";
 import "../styles/FileUpload.scss";
+import { BASE_URL } from "../helpers/ApiEndpoint";
 
 function FileUpload() {
   const [file, setFile] = useState<File | null>(null);
@@ -17,7 +18,7 @@ function FileUpload() {
     const formData = new FormData();
     formData.append("file", file);
 
-    const response = await fetch("http://localhost:5242/api/FileUpload", {
+    const response = await fetch(`${BASE_URL}/FileUpload`, {
       method: "POST",
       body: formData,
       credentials: "include",

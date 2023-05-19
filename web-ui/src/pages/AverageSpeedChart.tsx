@@ -3,6 +3,7 @@ import "chart.js/auto";
 import { useState, useEffect } from "react";
 import "../styles/App.scss";
 import "../styles/AverageSpeedChart.scss";
+import { BASE_URL } from "../helpers/ApiEndpoint";
 
 interface DataItem {
   hour: number;
@@ -16,7 +17,7 @@ const useAverageSpeedData = (date: Date | null, search: boolean) => {
     const fetchAverageSpeedData = async () => {
       if (!date || !search) return;
       const response = await fetch(
-        `http://localhost:5242/api/RoadStat/average-speed?date=${date.toISOString()}`,
+        `${BASE_URL}/RoadStat/average-speed?date=${date.toISOString()}`,
         {
           method: "GET",
           credentials: "include",

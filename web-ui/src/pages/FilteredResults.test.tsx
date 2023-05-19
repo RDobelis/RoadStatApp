@@ -12,6 +12,7 @@ import userEvent from "@testing-library/user-event";
 import fetchMock from "fetch-mock";
 import FilteredResults from "./FilteredResults";
 import { mockDataPage1, mockDataPage2 } from "../helpers/MockData";
+import { BASE_URL } from "../helpers/ApiEndpoint";
 
 describe("FilteredResults", () => {
   afterEach(() => {
@@ -38,7 +39,7 @@ describe("FilteredResults", () => {
     ];
 
     fetchMock.getOnce(
-      "http://localhost:5242/api/RoadStat/filtered?page=1&pageSize=20",
+      `${BASE_URL}/RoadStat/filtered?page=1&pageSize=20`,
       {
         body: data,
         headers: { "content-type": "application/json" },
@@ -66,12 +67,12 @@ describe("FilteredResults", () => {
 
   it("pagination behavior", async () => {
     fetchMock.get(
-      "http://localhost:5242/api/RoadStat/filtered?page=1&pageSize=20",
+      `${BASE_URL}/RoadStat/filtered?page=1&pageSize=20`,
       mockDataPage1
     );
 
     fetchMock.get(
-      "http://localhost:5242/api/RoadStat/filtered?page=2&pageSize=20",
+      `${BASE_URL}/RoadStat/filtered?page=2&pageSize=20`,
       mockDataPage2
     );
 
@@ -95,11 +96,11 @@ describe("FilteredResults", () => {
 
   test("Previous button behavior", async () => {
     fetchMock.get(
-      "http://localhost:5242/api/RoadStat/filtered?page=1&pageSize=20",
+      `${BASE_URL}/RoadStat/filtered?page=1&pageSize=20`,
       mockDataPage1
     );
     fetchMock.get(
-      "http://localhost:5242/api/RoadStat/filtered?page=2&pageSize=20",
+      `${BASE_URL}/RoadStat/filtered?page=2&pageSize=20`,
       mockDataPage2
     );
 
@@ -142,7 +143,7 @@ describe("FilteredResults", () => {
 
     test("URL includes MinSpeed filter", async () => {
       fetchMock.getOnce(
-        "http://localhost:5242/api/RoadStat/filtered?page=1&pageSize=20&MinSpeed=100",
+        `${BASE_URL}/RoadStat/filtered?page=1&pageSize=20&MinSpeed=100`,
         []
       );
 
@@ -160,7 +161,7 @@ describe("FilteredResults", () => {
     test("URL includes dateFrom filter", async () => {
       fetchMock.get(
         (url) =>
-          url.startsWith("http://localhost:5242/api/RoadStat/filtered") &&
+          url.startsWith(`${BASE_URL}/RoadStat/filtered`) &&
           url.includes("dateFrom="),
         []
       );
@@ -179,7 +180,7 @@ describe("FilteredResults", () => {
     test("URL includes dateTo filter", async () => {
       fetchMock.get(
         (url) =>
-          url.startsWith("http://localhost:5242/api/RoadStat/filtered") &&
+          url.startsWith(`${BASE_URL}/RoadStat/filtered`) &&
           url.includes("dateTo="),
         []
       );
@@ -204,10 +205,10 @@ describe("FilteredResults", () => {
           registrationNumber: "LV0000",
         },
       ];
-      fetchMock.get(
-        "http://localhost:5242/api/RoadStat/filtered?page=1&pageSize=20",
-        { status: 500, body: data }
-      );
+      fetchMock.get(`${BASE_URL}/RoadStat/filtered?page=1&pageSize=20`, {
+        status: 500,
+        body: data,
+      });
 
       render(<FilteredResults />);
 

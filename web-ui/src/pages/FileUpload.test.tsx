@@ -4,11 +4,12 @@ import FileUpload from "./FileUpload";
 import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
+import { BASE_URL } from "../helpers/ApiEndpoint";
 
 fetchMock.enableMocks();
 
 const server = setupServer(
-  rest.post("http://localhost:5242/api/FileUpload", (req, res, ctx) => {
+  rest.post(`${BASE_URL}/FileUpload`, (req, res, ctx) => {
     return res(ctx.json({ success: true }));
   })
 );
@@ -38,7 +39,7 @@ test("allows user to select a file", () => {
 
 it("alerts on failed file upload", async () => {
   server.use(
-    rest.post("http://localhost:5242/api/FileUpload", (req, res, ctx) => {
+    rest.post(`${BASE_URL}/FileUpload`, (req, res, ctx) => {
       return res(ctx.status(500));
     })
   );
@@ -68,7 +69,7 @@ test("submits the form and shows an alert on successful response", async () => {
   const mockAlert = jest.fn();
   window.alert = mockAlert;
 
-  const file = new File(["(⌐□_□)"], "chucknorris.png", { type: "image/png" });
+  const file = new File(["Text"], "text.txt", { type: "text/plain" });
 
   render(<FileUpload />);
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "../styles/App.scss";
 import "../styles/FilteredResults.scss";
+import { BASE_URL } from "../helpers/ApiEndpoint";
 
 interface CarSpeedEntry {
   id: number;
@@ -29,7 +30,7 @@ function FilteredResults() {
     },
     page: number
   ) => {
-    let url = `http://localhost:5242/api/RoadStat/filtered?page=${page}&pageSize=20`;
+    let url = `${BASE_URL}/RoadStat/filtered?page=${page}&pageSize=20`;
 
     if (filters.speed !== null) {
       url += `&MinSpeed=${filters.speed}`;

@@ -2,6 +2,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import fetchMock from "jest-fetch-mock";
 import AverageSpeedChart from "./AverageSpeedChart";
 import { mockData } from "../helpers/MockData";
+import { BASE_URL } from "../helpers/ApiEndpoint";
 
 fetchMock.enableMocks();
 
@@ -40,7 +41,7 @@ test("fetches data and renders it on chart when search button is clicked", async
   }
 
   expect(url).toContain(
-    "http://localhost:5242/api/RoadStat/average-speed?date=2023-05-15T00:00:00.000Z"
+    `${BASE_URL}/RoadStat/average-speed?date=2023-05-15T00:00:00.000Z`
   );
 });
 
@@ -85,5 +86,5 @@ test("does not format data when fetch response is not OK", async () => {
 
   await waitFor(() => expect(fetch).toHaveBeenCalled());
 
-  expect(screen.queryByText("Average Speed Chart")).not.toBeInTheDocument();
+  expect(screen.queryByText("Hourly Average Speed")).not.toBeInTheDocument();
 });
