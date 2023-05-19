@@ -1,0 +1,37 @@
+.chart-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.chart-filter-container {
+  border: #282c34 2px solid;
+  border-radius: 4px;
+  padding: 1rem;
+  background-color: #ecedf0;
+  margin-bottom: 1rem;
+}
+
+.chartWrapper {
+  width: 70vw;
+  height: 50vh;
+  min-height: 10vh;
+  max-height: 70vh;
+  position: relative;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.chartContent {
+  display: flex;
+  justify-content: center;
+}
