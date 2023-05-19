@@ -8,7 +8,7 @@ The RoadStat application offers the following functionality:
 
 1. **File Upload**: Users can upload car speed data files, which are then processed and stored in a database for analysis.
 
-2. **Filtered Results**: Users can apply filters to the car speed data, such as minimum speed, date range, and more, to retrieve specific records that meet the criteria.
+2. **Filtered Results**: Users can apply filters to the car speed data, such as minimum speed and date range to retrieve specific records that meet the criteria.
 
 3. **Average Speed Chart**: Users can select a specific date and view an average speed chart that visualizes the hourly average speed of cars for that day.
 
