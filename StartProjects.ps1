@@ -1,9 +1,18 @@
+# Build the .NET backend
+Set-Location -Path "..\RoadStatApp\RoadStat"
+dotnet build --configuration Release
+
 # Navigate to the directory of your .NET app and start the process
 Set-Location -Path "..\RoadStatApp\RoadStat\bin\Release\net7.0"
 Start-Process -FilePath "RoadStat.exe"
 
 # Go back to the root directory
 Set-Location -Path "..\..\..\.."
+
+# Build the React frontend
+Set-Location -Path "..\RoadStatApp\web-ui"
+Start-Process -FilePath "npm" -ArgumentList "install" -Wait
+npm run build
 
 # Start a new PowerShell process to run the frontend server
 Start-Process powershell -ArgumentList {
