@@ -8,15 +8,15 @@ The RoadStat application offers the following functionality:
 
 1. **File Upload**: Users can upload car speed data files, which are then processed and stored in a database for analysis.
 
-2. **Filtered Results**: Users can apply filters to the car speed data, such as minimum speed and date range to retrieve specific records that meet the criteria.
+2. **Filtered Results**: Users can apply filters to the car speed data, such as minimum speed and date range, to retrieve specific records that meet the criteria.
 
 3. **Average Speed Chart**: Users can select a specific date and view an average speed chart that visualizes the hourly average speed of cars for that day.
 
 ## Problems Encountered
 
-During the development of the RoadStat project, the following problems were encountered:
+During the development of the RoadStat project, the following problem was encountered:
 
-1. **Deployment on Online Services**: There were difficulties deploying the application on online services such as Azure and AWS. However, a PowerShell script was created to simplify the process of running the build, which provided a workaround for the deployment issue.
+1. **Deployment on Online Services**: There were difficulties deploying the application on online services such as Azure and AWS. However, a PowerShell script, `StartProjects.ps1`, was created to simplify the process of running the build. This script automates the commands for creating builds for both the backend and frontend, as well as running `npm install` to install the required dependencies. By running the `StartProjects.ps1` script, users can easily launch the RoadStat application without manual configuration.
 
 ## Future Improvements
 
@@ -32,27 +32,24 @@ These improvements would enhance the overall development experience, code qualit
 
 To run the RoadStat application locally, follow these steps:
 
+### Prerequisites
+
+- [.NET SDK](https://dotnet.microsoft.com/download)
+- [Node.js](https://nodejs.org)
+
 ### Setup
 
-1. Make sure you have Node.js installed on your machine.
+1. Make sure you have both the .NET SDK and Node.js installed on your machine.
 
-2. Open a terminal or PowerShell window and navigate to the `web-ui` folder inside the root folder of the solution.
+2. Download the RoadStat project and navigate to the root folder of the solution.
 
-3. Run the following command to install the required dependencies:
-
-   ```shell
-   npm install
-   ```
-
-4. After the dependencies are installed, navigate back to the root folder of the solution, where the `StartProjects.ps1` script is located.
-
-5. Run the `StartProjects.ps1` PowerShell script by executing the following command in the terminal or PowerShell window:
+3. Run the `StartProjects.ps1` PowerShell script by executing the following command in PowerShell:
 
    ```powershell
    .\StartProjects.ps1
    ```
 
-   This script will launch both the backend and frontend of the RoadStat application. It will also open the application in your default web browser at `localhost:3000`.
+   This script will automatically create builds for both the backend and frontend, install the required dependencies, and launch the RoadStat application. It will also open the application in your default web browser at `localhost:3000`.
 
 **Note**: The RoadStat application is connected to an AWS MySQL database, where the car speed data is stored. The database connection is already configured in the backend, so you don't need to make any changes related to the database setup.
 
