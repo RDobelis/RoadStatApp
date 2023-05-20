@@ -59,3 +59,20 @@ To run the RoadStat application locally, follow these steps:
 ## Author
 
 This RoadStat application was developed by Rihards Dobelis.
+
+## Screenshots
+
+<p align="center">
+  <b>File Upload Page</b><br>
+  <img src="./Page-FileUpload.png" alt="File Upload">
+</p>
+
+<p align="center">
+  <b>Filtered Results Page</b><br>
+  <img src="./Page-FilteredResults.png" alt="Filtered Results">
+</p>
+
+<p align="center">
+  <b>Average Speed Chart Page</b><br>
+  <img src="./Page-AverageSpeedChart.png" alt="Average Speed Chart">
+</p>
